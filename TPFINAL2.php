@@ -210,12 +210,13 @@ function contadorIntentos($partidas, $nombre){
 function resumenJugador($partidas,$nombre){
     // ARRAY $resum, $intentos
     // INT $indice, $i
-   $resum["contador"]=0;
-   $resum["puntaje"]=0;
-   $resum["victorias"]=0;
    $indice=0;
    $intentos=contadorIntentos($partidas,$nombre);
-   $resum=["intento1"=> $intentos[0],
+   $resum=[
+        "contador"=>0,
+        "puntaje"=>0,
+        "victorias"=>0,
+        "intento1"=> $intentos[0],
         "intento2"=> $intentos[1],
         "intento3"=> $intentos[2],
         "intento4"=> $intentos[3],
