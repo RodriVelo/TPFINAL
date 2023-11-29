@@ -32,7 +32,7 @@ function cargarPartidas(){
     $coleccionPartidas[7] = ["palabraWordix"=> "JARRA" , "jugador" => "martin", "intentos"=> 4, "puntaje" => 13];
     $coleccionPartidas[8] = ["palabraWordix"=> "CASAS" , "jugador" => "juan", "intentos"=> 5, "puntaje" => 12];
     $coleccionPartidas[9] = ["palabraWordix"=> "RASGO" , "jugador" => "brisa", "intentos"=> 2, "puntaje" => 15];
-    $coleccionPartidas[10] = ["palabraWordix"=> "NAVES" , "jugador" => "lucas", "intentos"=> 6, "puntaje" => 0];
+    $coleccionPartidas[10] = ["palabraWordix"=> "NAVES" , "jugador" => "lucas", "intentos"=> 0, "puntaje" => 0];
     return $coleccionPartidas;
 }
 
@@ -174,7 +174,7 @@ function contadorIntentos($partidas, $nombre){
     $intento4=0;
     $intento5=0;
     $intento6=0;
-    $resumen=[];
+    $intentos=[];
     for ($i=0; $i<count($partidas);$i++){
         if ($partidas[$i]["jugador"]==$nombre){
             if ($partidas[$i]["intentos"]==1){
@@ -197,8 +197,8 @@ function contadorIntentos($partidas, $nombre){
             }
         }
     }
-    $resumen=[$intento1, $intento2, $intento3, $intento4, $intento5, $intento6];
-    return $resumen;
+    $intentos=[$intento1, $intento2, $intento3, $intento4, $intento5, $intento6];
+    return $intentos;
 }
 
 /**
@@ -282,7 +282,7 @@ function solicitarJugador(){
  */
 function solicitarNumero($min,$max){
     // INT $numeroDePalabra
-             echo " Ingrese numero de palabra (un numero entre el ".$min." y el ".($max-1)."):";
+             echo "Ingrese numero de palabra (un numero entre el ".$min." y el ".($max-1)."):";
              $numeroDePalabra = trim(fgets(STDIN));
              while (($numeroDePalabra<$min) || ($numeroDePalabra>($max-1))){
                 echo "Ingrese por favor un numero entre el ".$min." y el ".($max-1).": ";
@@ -353,7 +353,7 @@ function ordenarPorPalabra($a, $b){
 // ARRAY $cargarPartidas, $cargarColeccionPalabras, $resumen, $ordenPartidas
 // STRING $nombreDeUsuario, $palabraElegida, $palabraAgregada
 
-$indice=count(cargarPartidas());
+$indice=(count(cargarPartidas()))-1;
 $cargarPartidas=cargarPartidas();
 $cargarColeccionPalabras = cargarColeccionPalabras();
 do{ 
@@ -362,6 +362,7 @@ do{
     switch ($opcionA) {
         case 1: 
             // JUGAR PREGUNTADO NOMBRE Y EL NUMERO SERA ELEGIDA POR EL USUARIO
+            $indice=$indice+1;
             $nombreDeUsuario = solicitarJugador();
             echo "Hola ".$nombreDeUsuario."\n";
             $numeroPalabra=solicitarNumero(0,count($cargarColeccionPalabras));
@@ -376,6 +377,7 @@ do{
             break;   
         case 2: 
             //JUGAR PREGUNTANDO NOMBRE Y EL NUMERO SERA DE FORMA ALEATORIA 
+            $indice=$indice+1;
             $nombreDeUsuario=solicitarJugador();
             $numeroPalabra= numeroAleatorio($cargarColeccionPalabras,$nombreDeUsuario,$cargarPartidas);
             $palabraElegida=$cargarColeccionPalabras[$numeroPalabra];

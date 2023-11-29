@@ -366,7 +366,8 @@ function obtenerPuntajeWordix($intento,$palabra)
 
     foreach ($letras as $letra) {
         $letra = strtoupper($letra); // Convertir a mayúsculas para comparación
-
+        
+        
         if ((in_array($letra, ['A', 'E', 'I', 'O', 'U']))==true) {
             // Vocales
             $puntaje=$puntaje+1;
