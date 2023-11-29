@@ -250,7 +250,7 @@ function mostrarResumen($nombre,$resumenJug){
     echo "Victorias: ".$resumenJug["victorias"]."\n";
     echo "Porcentaje Victorias: ".$resumenJug["porcentaje"]."\n";
     echo "Adivinados: \n";
-    for ($i=0;($i<(count($resumenJug)-4));$i++){
+    for ($i=0;($i<6);$i++){
         echo "          Intento ".($i+1).": ".$resumenJug["intento".$i+1]."\n";
     }
     echo "************************\n";
