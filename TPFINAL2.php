@@ -401,10 +401,9 @@ do{
             break;
         case 6:
             // MUESTRA LAS PARTIDAS JUGADAS ORDENADAS POR NOMBRE Y JUGADOR
-            $ordenPartidas=cargarPartidas();
-            uasort($ordenPartidas, 'ordenarPorJugador');
-            uasort($ordenPartidas, 'ordenarPorPalabra');
-            print_r($ordenPartidas);
+            uasort($cargarPartidas, 'ordenarPorJugador');
+            uasort($cargarPartidas, 'ordenarPorPalabra');
+            print_r($cargarPartidas);
             break;
         case 7:
             // LE PERMITE AGREGAR UNA PALABRA DE 5 LETRAS AL JUGADOR
