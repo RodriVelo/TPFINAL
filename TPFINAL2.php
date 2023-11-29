@@ -141,7 +141,7 @@ function primerPartidaGanadora($partidas,$nombre){
 
 /**
  * Este modulo muestra la primer partida ganada en WORDIX
- * @param array $primerPartida
+ * @param int $primerPartida
  * @param array $partidas
  * @param string $nombre
  */
