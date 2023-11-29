@@ -209,13 +209,13 @@ function contadorIntentos($partidas, $nombre){
  */
 function resumenJugador($partidas,$nombre){
     // ARRAY $resum, $intentos
-    // INT $indice, $i
-   $indice=0;
+    // INT $i
    $intentos=contadorIntentos($partidas,$nombre);
    $resum=[
         "contador"=>0,
         "puntaje"=>0,
         "victorias"=>0,
+        "porcentaje"=>0,
         "intento1"=> $intentos[0],
         "intento2"=> $intentos[1],
         "intento3"=> $intentos[2],
@@ -230,7 +230,6 @@ function resumenJugador($partidas,$nombre){
             if ($partidas[$i]["puntaje"]>0){
                 $resum["victorias"]=$resum["victorias"]+1;
             }
-            $indice=$indice+1;
         } 
     }
     $resum["porcentaje"]=(($resum["victorias"]*100)/$resum["contador"]);
