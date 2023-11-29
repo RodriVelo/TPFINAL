@@ -120,7 +120,8 @@ function escribirSegunEstado($texto, $estado)
 }
 
 /**
- * ****COMPLETAR*****
+ * Modulo imprime en pantalla un texto de bienvenida al jugar una partida de WORDIX
+ * @param string $usuario
  */
 function escribirMensajeBienvenida($usuario)
  {
@@ -133,7 +134,9 @@ function escribirMensajeBienvenida($usuario)
 
 
 /**
- * ****COMPLETAR*****
+ * Modulo que verifica si cada letra de la palabra corresponde a una letra
+ * @param string $cadena
+ * @return bool
  */
 function esPalabra($cadena)
  {
@@ -149,7 +152,8 @@ function esPalabra($cadena)
 }
 
 /**
- *  ****COMPLETAR*****
+ * Modulo que verifica si la palabra ingresada es de 5 letras
+ * @return string
  */
 function leerPalabra5Letras()
  {
@@ -167,7 +171,7 @@ function leerPalabra5Letras()
 
 
 /**
- * Inicia una estructura de datos Teclado. La estructura es de tipo: ¿Indexado, asociativo o Multidimensional?
+ * Inicia una estructura de datos Teclado. La estructura es de tipo: Asociativo
  *@return array
  */
 function iniciarTeclado()
@@ -328,7 +332,10 @@ function esIntentoGanado($estructuraPalabraIntento)
 }
 
 /**
- * ****COMPLETAR***** 
+ * Modulo que calcula el puntaje final de la partida
+ * @param int $intento
+ * @param string $palabra
+ * @return int
  */
 function obtenerPuntajeWordix($intento,$palabra)
   {    
@@ -371,10 +378,7 @@ function obtenerPuntajeWordix($intento,$palabra)
             $puntaje = $puntaje + 3;
         }
     }
-
-    return $puntaje;
-    
-    /* ****COMPLETAR***** VALOR DE LETRAS*/
+    /* VALOR DE LETRAS: las vocales 1 pto, las consonantes anteriores a la “M” (inclusive) son 2 ptos, y las consonantes posteriores a la “M” son 3 puntos*/
     return $puntaje;
 }
 
