@@ -124,19 +124,17 @@ function primerPartidaGanadora($partidas,$nombre){
     // BOOL $logic
     $i = 0;
     $logic = false;
+    $indice=-1;
     while ($i < count($partidas) && $logic==false){
         if ($partidas[$i]["jugador"] == $nombre && $partidas[$i]["puntaje"] > 0){
             $logic = true;
+            $indice=$i;
         }
-        else {
+        
             $i++;
-        }
+        
     }
-    // Si no se encontró ninguna partida ganadora, establece $i a -1
-    if ($logic==false) {
-        $i = -1;
-    }
-    return $i;
+    return $indice;
 }
 
 /**
@@ -336,7 +334,7 @@ function ordenarPorJugador($a, $b){
  */
 function ordenarPorPalabra($a, $b){
     // INT $valor
-    $valor=0;
+    //$valor=0;
     if ($a["jugador"]==$b["jugador"]){
         if ($a["palabraWordix"]>$b["palabraWordix"]){
             $valor= 1;
@@ -344,7 +342,14 @@ function ordenarPorPalabra($a, $b){
         else {
             $valor= -1;
         }
+    } elseif ($a["jugador"]<$b["jugador"]){
+        $valor=-1;
     }
+    else {
+        $valor=1;
+    }
+
+
     return $valor;
 }
 
@@ -410,7 +415,6 @@ do{
             $cantPalabras= count($cargarColeccionPalabras);
             $palabraAgregada=leerPalabra5Letras();
             $cargarColeccionPalabras[$cantPalabras]=$palabraAgregada;
-            print_r($cargarColeccionPalabras);
         }
     } while ($opcionA<8);
 ?>
