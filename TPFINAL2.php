@@ -183,31 +183,31 @@ function resumenJugador($partidas,$nombre){
     ];
     for ($i=0; $i<count($partidas); $i++){
 
-        if ($partidas[$i]["jugador"]==$nombre){
+        if ($partidas[$i]["jugador"] == $nombre){
 
-            $resum["contador"]=$resum["contador"]+1;
+            $resum["contador"]++;
             $resum["puntaje"]=$resum["puntaje"]+$partidas[$i]["puntaje"];
 
             if ($partidas[$i]["puntaje"]>0){
                 $resum["victorias"]=$resum["victorias"]+1;
                 switch ($partidas[$i]["intentos"]){
                 case 1: 
-                    $resum["intento1"]=$resum["intento1"]+1;
+                    $resum["intento1"]++;
                 break;
                 case 2:
-                    $resum["intento2"]=$resum["intento2"]+1;
+                    $resum["intento2"]++;
                 break;
                 case 3: 
-                    $resum["intento3"]=$resum["intento3"]+1;
+                    $resum["intento3"]++;
                 break;
                 case 4:
-                    $resum["intento4"]=$resum["intento4"]+1;
+                    $resum["intento4"]++;
                 break;
                 case 5:
-                    $resum["intento5"]=$resum["intento5"]+1;
+                    $resum["intento5"]++;
                 break;
                 case 6: 
-                    $resum["intento6"]=$resum["intento6"]+1;
+                    $resum["intento6"]++;
                 break;
                 }
             }
@@ -309,10 +309,10 @@ function ordenarArreglo($partida1, $partida2){
         }
     }
     elseif ($partida1["jugador"] < $partida2["jugador"]){
-        $valor=-1;
+        $valor= -1;
     }
     else {
-        $valor=1;
+        $valor= 1;
     }
     return $valor;
 }
@@ -331,7 +331,7 @@ do{
     switch ($opcionA) {
         case 1: 
             // JUGAR PREGUNTADO NOMBRE Y EL NUMERO SERA ELEGIDA POR EL USUARIO
-            $indice=$indice+1;
+            $indice++;
             $nombreDeUsuario = solicitarJugador();
             echo "Hola ".$nombreDeUsuario."\n";
             $numeroPalabra=solicitarNumero(1,count($cargarColeccionPalabras));
@@ -346,7 +346,7 @@ do{
             break;   
         case 2: 
             //JUGAR PREGUNTANDO NOMBRE Y EL NUMERO SERA DE FORMA ALEATORIA
-            $indice=$indice+1;
+            $indice++;
             $nombreDeUsuario=solicitarJugador();
             $numeroPalabra= numeroAleatorio($cargarColeccionPalabras,$nombreDeUsuario,$cargarPartidas);
             $palabraElegida=$cargarColeccionPalabras[($numeroPalabra)-1];
@@ -376,15 +376,12 @@ do{
             break;
         case 7:
             // LE PERMITE AGREGAR UNA PALABRA DE 5 LETRAS AL JUGADOR
-            //$cantPalabras= count($cargarColeccionPalabras);
             $palabraAgregada=leerPalabra5Letras();
             while ((analizarPalabraAgregada($palabraAgregada, $cargarColeccionPalabras))==true){
                 echo "Esta palabra ya existe.\n";
                 $palabraAgregada=leerPalabra5Letras();
             }
-            array_push($cargarColeccionPalabras, $palabraAgregada);
-            //$cargarColeccionPalabras[$cantPalabras]=$palabraAgregada;
-            
+            array_push($cargarColeccionPalabras, $palabraAgregada);            
         }
     } while ($opcionA<8);
 ?>
