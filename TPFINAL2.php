@@ -322,7 +322,7 @@ function ordenarArreglo($partida1, $partida2){
 // ARRAY $cargarPartidas, $cargarColeccionPalabras, $resumen, $ordenPartidas
 // STRING $nombreDeUsuario, $palabraElegida, $palabraAgregada
 
-$indice=(count(cargarPartidas()))-1;
+//$indice=(count(cargarPartidas()))-1;
 $cargarPartidas=cargarPartidas();
 $cargarColeccionPalabras = cargarColeccionPalabras();
 do{ 
@@ -331,7 +331,7 @@ do{
     switch ($opcionA) {
         case 1: 
             // JUGAR PREGUNTADO NOMBRE Y EL NUMERO SERA ELEGIDA POR EL USUARIO
-            $indice++;
+            //$indice++;
             $nombreDeUsuario = solicitarJugador();
             echo "Hola ".$nombreDeUsuario."\n";
             $numeroPalabra=solicitarNumero(1,count($cargarColeccionPalabras));
@@ -341,16 +341,16 @@ do{
                 $numeroPalabra = trim(fgets(STDIN));
             }
             $palabraElegida = $cargarColeccionPalabras[($numeroPalabra)-1];
-            $cargarPartidas[$indice] = jugarWordix($palabraElegida, $nombreDeUsuario);
+            $cargarPartidas[(count($cargarPartidas))] = jugarWordix($palabraElegida, $nombreDeUsuario);
             echo "**************************\n";
             break;   
         case 2: 
             //JUGAR PREGUNTANDO NOMBRE Y EL NUMERO SERA DE FORMA ALEATORIA
-            $indice++;
+            //$indice++;
             $nombreDeUsuario=solicitarJugador();
             $numeroPalabra= numeroAleatorio($cargarColeccionPalabras,$nombreDeUsuario,$cargarPartidas);
             $palabraElegida=$cargarColeccionPalabras[($numeroPalabra)-1];
-            $cargarPartidas[$indice]=jugarWordix($palabraElegida , $nombreDeUsuario);
+            $cargarPartidas[count($cargarPartidas)]=jugarWordix($palabraElegida , $nombreDeUsuario);
             break;
         case 3: 
             // MUESTRA UNA PARTIDA JUGADA 
